@@ -9,3 +9,16 @@ canvas{
     image-rendering: pixelated; 
     cursor: crosshair;
 }
+#palette{
+    margin-top: 10px;
+}
+#palette button {
+    width: 32px;
+    height: 32px;
+    margin: 2px;
+    border: 2px solid #555;
+    cursor: pointer;
+}
+#palette button.selected {
+    border-color: #fff;
+}
