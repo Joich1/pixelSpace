@@ -31,7 +31,32 @@ function drawAll() {
     }
 }
 
+async function LoadPixels() {
+    try{
+        const response = await fetch("get_pixels.php");
+        const data = await response.json();
 
+        data.foreach((pixel) =>{
+            pixels[pixel.y][pixel.x] = pixel.color;
+        });
+
+        drawAll();
+    } catch (error){
+        console.error("ould not load pixels:", error);
+    }
+}
+
+async function savePixel(x, y, color){
+    try {
+        await fetch("sest_pixel.php",{
+            method: "POST",
+            body: new URLSearchParams({ x, y, color})
+        });
+
+    } catch (error){
+        console.error("could not save pixel:", error);
+    }
+}
 
 canvas.addEventListener("click", (event) => {
     const area = canvas.getBoundingClientRect();
@@ -52,4 +77,3 @@ colors.forEach((color) => {
     palette.appendChild(button);
 });
 
-drawAll();
