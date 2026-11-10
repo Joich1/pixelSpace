@@ -5,4 +5,3 @@ $pass = '';
 $db = 'pixelspace';
 
 $conn = new mysqli($host,$user,$pass,$db);
-?>
