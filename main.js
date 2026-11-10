@@ -31,6 +31,8 @@ function drawAll() {
     }
 }
 
+
+
 canvas.addEventListener("click", (event) => {
     const area = canvas.getBoundingClientRect();
     const x = Math.floor((event.clientX - area.left) / size);
