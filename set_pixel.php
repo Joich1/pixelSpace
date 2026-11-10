@@ -2,7 +2,7 @@
 require 'config.php';
 header ("Content-Type: application/json");
 
-$x = (int)($_POST["y"] ?? -1);
+$x = (int)($_POST["x"] ?? -1);
 $y = (int)($_POST["y"] ?? -1);
 $color = $_POST["color"] ?? "";
 

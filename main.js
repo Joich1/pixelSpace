@@ -1,4 +1,4 @@
-const width = 64;
+const width = 128;
 const height = 64;
 const size = 10;
 
@@ -31,30 +31,29 @@ function drawAll() {
     }
 }
 
-async function LoadPixels() {
-    try{
+async function loadPixels() {
+    try {
         const response = await fetch("get_pixels.php");
         const data = await response.json();
 
-        data.foreach((pixel) =>{
+        data.forEach((pixel) => {
             pixels[pixel.y][pixel.x] = pixel.color;
         });
 
         drawAll();
-    } catch (error){
-        console.error("ould not load pixels:", error);
+    } catch (error) {
+        console.error("Could not load pixels:", error);
     }
 }
 
-async function savePixel(x, y, color){
+async function savePixel(x, y, color) {
     try {
-        await fetch("sest_pixel.php",{
+        await fetch("set_pixel.php", {
             method: "POST",
-            body: new URLSearchParams({ x, y, color})
+            body: new URLSearchParams({ x, y, color })
         });
-
-    } catch (error){
-        console.error("could not save pixel:", error);
+    } catch (error) {
+        console.error("Could not save pixel:", error);
     }
 }
 
@@ -64,6 +63,7 @@ canvas.addEventListener("click", (event) => {
     const y = Math.floor((event.clientY - area.top) / size);
     pixels[y][x] = currentColor;
     drawPixel(x, y);
+    savePixel(x, y, currentColor);
 });
 
 colors.forEach((color) => {
@@ -77,3 +77,5 @@ colors.forEach((color) => {
     palette.appendChild(button);
 });
 
+loadPixels();
+setInterval(loadPixels, 2000);

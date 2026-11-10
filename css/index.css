@@ -1,0 +1,82 @@
+* {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: #fafaf9;
+            color: #242824;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            height: 64px;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eceeeb;
+        }
+
+        nav a {
+            color: inherit;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .brand {
+            font-weight: 700;
+        }
+
+        main {
+            min-height: calc(100vh - 64px);
+            display: grid;
+            place-items: center;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .hero-icon {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 600;
+            letter-spacing: -0.06em;
+        }
+
+        .canvas-button {
+            padding: 12px 22px;
+            border-radius: 6px;
+            background: #242824;
+            color: #fff;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 160ms ease;
+        }
+
+        .canvas-button:hover {
+            background: #444b45;
+        }
+
+        .canvas-button:focus-visible {
+            outline: 3px solid #8bc69b;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding-inline: 20px;
+            }
+        }
