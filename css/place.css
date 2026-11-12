@@ -1,24 +1,114 @@
-body{
-    font-family: sans-serif; 
-    text-align: center; 
-    background: #1a1a2e; 
-    color: #fff;
+* {
+    box-sizing: border-box;
 }
-canvas{ 
-    border: 2px solid #fff; 
-    image-rendering: pixelated; 
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: rgb(139, 139, 139);
+    color: #242824;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    height: 64px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #eceeeb;
+}
+
+nav a {
+    color: inherit;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.brand {
+    font-weight: 700;
+}
+
+.back-button {
+    padding: 10px 16px;
+    border-radius: 6px;
+    background: #242824;
+    color: #fff;
+    transition: background 160ms ease;
+}
+
+.back-button:hover {
+    background: #444b45;
+}
+
+.back-button:focus-visible,
+#palette button:focus-visible {
+    outline: 3px solid #8bc69b;
+    outline-offset: 3px;
+}
+
+main {
+    width: 100%;
+    max-width: 1344px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(32px, 6vw, 48px);
+    font-weight: 600;
+    letter-spacing: -0.06em;
+}
+
+.canvas-frame {
+    width: 100%;
+    max-width: 1280px;
+    overflow: hidden;
+    border: 1px solid #dfe3dd;
+    border-radius: 4px;
+    background: #fff;
+}
+
+#canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
     cursor: crosshair;
 }
-#palette{
-    margin-top: 10px;
+
+#palette {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
 }
+
 #palette button {
-    width: 32px;
-    height: 32px;
-    margin: 2px;
-    border: 2px solid #555;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 2px solid #d1d5d0;
+    border-radius: 5px;
     cursor: pointer;
 }
+
 #palette button.selected {
-    border-color: #fff;
+    border-color: #242824;
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding-inline: 20px;
+    }
+
+    main {
+        padding: 32px 16px;
+        gap: 20px;
+    }
 }

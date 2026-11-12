@@ -59,8 +59,8 @@ async function savePixel(x, y, color) {
 
 canvas.addEventListener("click", (event) => {
     const area = canvas.getBoundingClientRect();
-    const x = Math.floor((event.clientX - area.left) / size);
-    const y = Math.floor((event.clientY - area.top) / size);
+    const x = Math.min(width - 1, Math.floor((event.clientX - area.left) * canvas.width / area.width / size));
+    const y = Math.min(height - 1, Math.floor((event.clientY - area.top) * canvas.height / area.height / size));
     pixels[y][x] = currentColor;
     drawPixel(x, y);
     savePixel(x, y, currentColor);
