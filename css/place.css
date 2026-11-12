@@ -82,6 +82,49 @@ h1 {
     cursor: crosshair;
 }
 
+#board{
+    position: relative;
+    display: inline-block;
+}
+
+#indicator{
+    position: absolute;
+    display: none;
+    pointer-events: none;
+}
+
+.corner{
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    border: 0 solid #888
+}
+.top-left{
+    top: 0;
+    left: 0;
+    border-top-width: 3px;
+    border-left-width: 3px;
+}
+.top-right{
+    top: 0;
+    right: 0;
+    border-top-width: 3px;
+    border-right-width: 3px;
+}
+.bottom-left{
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+}
+.bottom-right{
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 3px;
+    border-right-width: 3px;
+}
+
 #palette {
     display: flex;
     flex-wrap: wrap;

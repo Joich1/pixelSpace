@@ -15,7 +15,15 @@
     <main>
         <h1>Canvas</h1>
         <div class="canvas-frame">
-            <canvas id="canvas"></canvas>
+            <div id="board">
+                <canvas id="canvas"></canvas>
+                <div id="indicator">
+                    <div class="corner top-left"></div>
+                    <div class="corner top-right"></div>
+                    <div class="corner bottom-left"></div>
+                    <div class="corner bottom-right"></div>
+                </div>
+            </div>
         </div>
         <div id="palette" aria-label="Paleta de cores"></div>
     </main>
