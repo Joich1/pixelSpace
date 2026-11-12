@@ -141,8 +141,11 @@ h1 {
     cursor: pointer;
 }
 
-#palette button.selected {
-    border-color: #242824;
+#palette button.selected-left {
+    border-color: #fff;
+}
+#palette button.selected-right {
+    box-shadow: 0 0 0 3px #4da3ff;
 }
 
 @media (max-width: 480px) {
