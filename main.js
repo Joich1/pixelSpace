@@ -1,4 +1,4 @@
-//---------------------------MOUSE DOIS E UM (TO FAZENDO, SE DER O ERRADO TEM CODIGO EMBAIXO!!!!!!!-----------------------------
+//---------------------------MOUSE DOIS E UM (TO FAZENDO, SE DER O ERRADO TEM CODIGO EMBAIXO!!!!!!!)-----------------------------
 
 const width = 128;
 const height = 64;
@@ -17,10 +17,7 @@ indicator.style.height = size * 3 + "px";
 
 const colors = ["#ffffff", "#000000", "#e50000", "#02be01", "#0083c7", "#e5d900", "#a06a42", "#820080"];
 
-const buttonColors = {
-    left: "#000000",
-    right: "#ffffff"
-}
+const buttonColors = {left: "#000000", right: "#ffffff"};
 
 let selected = null
 
@@ -61,7 +58,7 @@ function getSide(mouseButton){
 }
 
 
-//pega da função getside isso aqui
+//pega do canvas.addeventlistener isso aqui
 function setColor (side, color, button ){
     buttonColors[side] = color;
 
@@ -98,20 +95,29 @@ async function savePixel(x, y, color) {
 }
 
 canvas.addEventListener("mousedown", (event) => {
+    const side = getSide(event.button)
+    if(!side) return;
+
+
     const area = canvas.getBoundingClientRect();
     const x = Math.floor((event.clientX - area.left) / size);
     const y = Math.floor((event.clientY - area.top) / size);
 
     if (selected && selected.x === x && selected.y === y) {
-        pixels[y][x] = currentColor;
+        const color = buttonColors[side];
+        pixels[y][x] = color;
         drawPixel(x, y);
-        savePixel(x, y, currentColor);
+        savePixel(x, y, color);
         clearSelection();
     } else {
         selected = { x: x, y: y };
         showIndicator(x, y);
     }
 });
+
+canvas.addEventListener("contextmenu", (event) =>{
+    event.preventDefault();
+})
 
 //isso é pra limpar a seleçao com o esc
 document.addEventListener("keydown", (event) =>{
@@ -123,11 +129,17 @@ document.addEventListener("keydown", (event) =>{
 colors.forEach((color) => {
     const button = document.createElement("button");
     button.style.background = color;
-    button.addEventListener("click", () => {
-        currentColor = color;
-        document.querySelectorAll("#palette button").forEach((b) => b.classList.remove("selected"));
-        button.classList.add("selected");
+
+    if (color === buttonColors.left) button.classList.add("selected-left");
+    if (color === buttonColors.right) button.classList.add("selected-right");
+
+    button.addEventListener("mousedown", (event) => {
+        const side = getSide(event.button);
+        if (side) setColor(side, color, button);
     });
+    button.addEventListener("contextmenu", (event) =>{
+        event.preventDefault();
+    })
     palette.appendChild(button);
 });
 
