@@ -14,4 +14,4 @@
 
 Acesse o projeto online através do link abaixo:
 
-👉 **[pixelspace-six.vercel.app](https://pixelspace-six.vercel.app)**
+👉 **[pixelspace.ct.ws](pixelspace.ct.ws)**
